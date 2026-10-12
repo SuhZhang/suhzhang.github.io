@@ -29,17 +29,23 @@ function AuthorList({ authors }: { authors: string[] }) {
 }
 
 function PublicationRow({ paper }: { paper: Publication }) {
+  const paperHref = paper.links[0]?.href;
+  const visualHref = paper.imageHref || paperHref;
+  const visualClassName = `paper-visual${paper.secondaryImage ? ' paired-visual' : ''}`;
+  const visual = <>
+    <img src={paper.image} alt={paper.imageAlt || paper.title} width="408" height="272" loading="lazy" decoding="async" />
+    {paper.secondaryImage && <img src={paper.secondaryImage} alt={paper.secondaryImageAlt || paper.title} width="408" height="272" loading="lazy" decoding="async" />}
+  </>;
   return (
     <article className={`publication${paper.image ? '' : ' text-only'}`} id={paper.id}>
-      {paper.image && <a className={`paper-visual${paper.secondaryImage ? ' paired-visual' : ''}`} href={paper.imageHref || paper.links[0].href} aria-label={`${paper.imageHref ? 'View full figure for' : 'Read'} ${paper.title}`} {...external}>
-        <img src={paper.image} alt={paper.imageAlt || paper.title} width="408" height="272" loading="lazy" decoding="async" />
-        {paper.secondaryImage && <img src={paper.secondaryImage} alt={paper.secondaryImageAlt || paper.title} width="408" height="272" loading="lazy" decoding="async" />}
-      </a>}
+      {paper.image && (visualHref
+        ? <a className={visualClassName} href={visualHref} aria-label={`${paper.imageHref ? 'View full figure for' : 'Read'} ${paper.title}`} {...external}>{visual}</a>
+        : <div className={visualClassName}>{visual}</div>)}
       <div className="paper-content">
-        <h3><a href={paper.links[0].href} {...external}>{paper.title}</a></h3>
+        <h3>{paperHref ? <a href={paperHref} {...external}>{paper.title}</a> : paper.title}</h3>
         <AuthorList authors={paper.authors} />
         <p className="venue-line"><span className="venue">{paper.venue}</span>{paper.distinction && <span className="distinction">{paper.distinction}</span>}</p>
-        <div className="paper-links">{paper.links.map((link) => <a key={link.href} href={link.href} {...external}>{link.label}</a>)}</div>
+        {paper.links.length > 0 && <div className="paper-links">{paper.links.map((link) => <a key={link.href} href={link.href} {...external}>{link.label}</a>)}</div>}
         <p className="paper-topic">{paper.topic}</p>
       </div>
     </article>
@@ -98,10 +104,20 @@ export default function Home() {
       </section>
       <section id="service" className="content-section" aria-labelledby="service-title">
         <div className="section-heading"><h2 id="service-title">Academic Service</h2></div>
-        <div className="service-grid"><div><h3>Conference Reviewer</h3><p>CVPR / ECCV / NeurIPS / AAAI</p></div><div><h3>Journal Reviewer</h3><p><abbr title="IEEE Transactions on Pattern Analysis and Machine Intelligence">TPAMI</abbr> / <abbr title="International Journal of Computer Vision">IJCV</abbr> / <abbr title="IEEE Transactions on Circuits and Systems for Video Technology">TCSVT</abbr> / <abbr title="Pattern Recognition">PR</abbr></p></div></div>
+        <div className="service-grid">
+          <div>
+            <h3>Conference Reviewer</h3>
+            <p>CVPR / ECCV / NeurIPS / AAAI</p>
+            <p className="reviewer-recognition">NeurIPS 2026, Top Reviewer</p>
+          </div>
+          <div>
+            <h3>Journal Reviewer</h3>
+            <p><abbr title="IEEE Transactions on Pattern Analysis and Machine Intelligence">TPAMI</abbr> / <abbr title="International Journal of Computer Vision">IJCV</abbr> / <abbr title="IEEE Transactions on Image Processing">TIP</abbr> / <abbr title="IEEE Transactions on Circuits and Systems for Video Technology">TCSVT</abbr> / <abbr title="Pattern Recognition">PR</abbr></p>
+          </div>
+        </div>
       </section>
       <VisitorMap widgetId={visitorMapId} />
     </main>
-    <footer className="site-footer"><div className="shell footer-inner"><p>© 2026 Shihua Zhang · Last updated September 2026</p></div></footer>
+    <footer className="site-footer"><div className="shell footer-inner"><p>© 2026 Shihua Zhang · Last updated October 2026</p></div></footer>
   </>;
 }

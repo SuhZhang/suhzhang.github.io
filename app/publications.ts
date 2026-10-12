@@ -15,10 +15,19 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
+    id: 'bravo',
+    title: 'BRAVO: Bridge Matching for Autoregressive Video Generation',
+    authors: ['Shihua Zhang*', 'Zhenxiong Tan*', 'Xinchao Wang'],
+    venue: 'NeurIPS 2026', topic: 'Video Generation',
+    image: '/images/bravo-figure1.png',
+    imageAlt: 'BRAVO Figure 1: the text prompt and input image at left, with noise-to-data video generation in the top row and BRAVO data-to-data video generation in the bottom row',
+    links: [],
+  },
+  {
     id: 'geosr',
     title: 'Make Geometry Matter for Spatial Reasoning',
     authors: ['Shihua Zhang', 'Qiuhong Shen', 'Shizun Wang', 'Tianbo Pan', 'Xinchao Wang'],
-    venue: 'ECCV 2026', distinction: 'Award Candidate · Oral',
+    venue: 'ECCV 2026', distinction: 'Oral · Award Candidate (0.095%)',
     topic: 'Vision-language models · Spatial reasoning',
     image: '/images/geosr-static-radar.png',
     imageAlt: 'GeoSR static spatial reasoning radar chart',

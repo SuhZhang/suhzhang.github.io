@@ -5,6 +5,7 @@ The author’s Google Scholar photograph is used as requested. Research thumbnai
 | Homepage image | Source |
 | --- | --- |
 | `shihua-zhang.jpg` | [Author’s Google Scholar photo](https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=7f_tYK4AAAAJ&citpid=1) |
+| `bravo-figure1.png` | Figure 1, page 1 of the author's supplied `656_BRAVO_Bridge_Matching_for_.pdf`. The complete figure retains the prompt, input image, and both rows of generated video frames. Rendered directly with Poppler at 300 dpi, cropped to the figure without the caption; no scientific content was changed. |
 | `geosr-static-radar.png`, `geosr-dynamic-radar.png` | GeoSR Figure 1: unchanged original `radar_table1_with_avg_rings.png` and `radar_table2_with_avg_rings.png` from the author's ECCV 2026 camera-ready source. [Paper](https://arxiv.org/abs/2603.26639) |
 | `corradapter-teaser.png` | [Align Images Before You Generate](https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Align_Images_Before_You_Generate_CVPR_2026_paper.html) |
 | `sag-gnn-results.png` | [SAG-GNN: Semantic-Aware Guided GNN for Descriptor-Free 2D-3D Matching](https://github.com/tinxu0203/SAG-GNN/blob/main/README.md) |
